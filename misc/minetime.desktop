@@ -1,10 +1,11 @@
 [Desktop Entry]
-Name=Freeminer
-GenericName=Freeminer
+Name=MineTime
+GenericName=MineTime
 Comment=Multiplayer infinite-world block sandbox
-Exec=freeminer
-Icon=freeminer
+Exec=minetime
+Icon=minetime
 Terminal=false
 Type=Application
 Categories=Game;
 StartupNotify=false
+Name[en_US]=minetime.desktop

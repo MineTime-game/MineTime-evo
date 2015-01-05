@@ -277,7 +277,7 @@ core.register_item(":unknown", {
 })
 
 core.register_node(":air", {
-	description = "Air (you hacker you!)",
+	description = "Air (not sure why you got this!)",
 	inventory_image = "unknown_node.png",
 	wield_image = "unknown_node.png",
 	drawtype = "airlike",
@@ -293,7 +293,7 @@ core.register_node(":air", {
 })
 
 core.register_node(":ignore", {
-	description = "Ignore (you hacker you!)",
+	description = "Ignore (WTF!!!)",
 	inventory_image = "unknown_node.png",
 	wield_image = "unknown_node.png",
 	drawtype = "airlike",

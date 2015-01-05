@@ -1055,10 +1055,10 @@ end
 -- Credits tab
 --------------------------------------------------------------------------------
 function tabbuilder.tab_credits()
-	return	"label[7.1,0;Freeminer " .. core.get_version() .. "]" ..
-			"label[7.1,0.3;http://freeminer.org]" ..
+	return	"label[7.1,0;MineTime " .. core.get_version() .. "]" ..
+			"label[7.1,0.3;<web_address_here>]" ..
 			"label[7.1,1.3;Contributors:]" ..
-			"label[7.1,1.7;https://github.com/freeminer/freeminer/graphs/contributors]"
+			"label[7.1,1.7;https://github.com/minetime-game/minetime-evo/graphs/contributors]"
 end
 
 

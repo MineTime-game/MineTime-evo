@@ -1,16 +1,14 @@
-# Freeminer
+# MineTime
 
-[![Build Status](https://travis-ci.org/freeminer/freeminer.png)](https://travis-ci.org/freeminer/freeminer)
+[![Build Status](https://travis-ci.org/MineTime-game/MineTime-evo.png)](https://travis-ci.org/MineTime-game/MineTime-evo)
 
-Freeminer is an open source sandbox game inspired by [Minecraft](https://minecraft.net/).
+MineTime is an open source sandbox game.
 
-Freeminer is based on Minetest which is developed by a [number of contributors](https://github.com/minetest/minetest/graphs/contributors) from all over the globe.
+MineTime is based on Freeminer which is developed by a [number of contributors](https://github.com/freeminer/freeminer/graphs/contributors) from all over the globe.
 
 It aims to make the game fun while trading off some bits of perfectionism.
 
 ## Further documentation
-- Website: http://freeminer.org/
-- Forums: http://forum.freeminer.org/
 
 ## Default controls
 - `WASD`: move
@@ -59,8 +57,8 @@ yaourt -S msgpack
 
 Download source code:
 ```bash
-git clone --recursive https://github.com/freeminer/freeminer.git
-cd freeminer
+git clone --recursive https://github.com/minetime-game/minetime-evo.git
+cd MineTime-evo
 ```
 
 <sup>Recommended minimum compiler version: `gcc 4.8` or `clang 3.3`</sup>
@@ -75,5 +73,5 @@ time nice make -j $(nproc || sysctl -n hw.ncpu || echo 2)
 Play it!
 ```
 cd ..
-./bin/freeminer
+./bin/minetime
 ```

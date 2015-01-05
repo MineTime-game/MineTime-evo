@@ -23,7 +23,7 @@ tags
 /world/
 
 ## Configuration/log files
-freeminer.conf
+minetime.conf
 debug.txt
 client/favoriteservers.json
 

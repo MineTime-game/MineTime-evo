@@ -83,9 +83,9 @@ Player::Player(IGameDef *gamedef, const std::string & name):
 	movement_acceleration_default   = 3    * BS;
 	movement_acceleration_air       = 2    * BS;
 	movement_acceleration_fast      = 10   * BS;
-	movement_speed_walk             = 4    * BS;
+	movement_speed_walk             = 3    * BS;
 	movement_speed_crouch           = 1.35 * BS;
-	movement_speed_fast             = 20   * BS;
+	movement_speed_fast             = 15   * BS;
 	movement_speed_climb            = 2    * BS;
 	movement_speed_jump             = 6.5  * BS;
 	movement_liquid_fluidity        = 1    * BS;

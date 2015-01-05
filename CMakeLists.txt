@@ -6,15 +6,15 @@ if(${CMAKE_VERSION} STREQUAL "2.8.2")
 endif(${CMAKE_VERSION} STREQUAL "2.8.2")
 
 # This can be read from ${PROJECT_NAME} after project() is called
-project(freeminer)
+project(minetime)
 
 set(VERSION_EXTRA "" CACHE STRING "Stuff to append to version string")
 
 # Also remember to set PROTOCOL_VERSION in clientserver.h when releasing
-set(VERSION_MAJOR 0)
-set(VERSION_MINOR 4)
-set(VERSION_PATCH 11)
-set(VERSION_TWEAK 5)
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 0)
+set(VERSION_TWEAK 0)
 set(VERSION_PATCH_ORIG ${VERSION_PATCH})
 
 if(VERSION_EXTRA)
@@ -172,13 +172,13 @@ install(FILES "README.md" DESTINATION "${DOCDIR}")
 install(FILES "doc/lua_api.txt" DESTINATION "${DOCDIR}")
 install(FILES "doc/menu_lua_api.txt" DESTINATION "${DOCDIR}")
 install(FILES "doc/mapformat.txt" DESTINATION "${DOCDIR}")
-install(FILES "freeminer.conf.example" DESTINATION "${EXAMPLE_CONF_DIR}")
+install(FILES "minetime.conf.example" DESTINATION "${EXAMPLE_CONF_DIR}")
 
 if(UNIX AND NOT APPLE)
-	install(FILES "doc/freeminer.6" "doc/freeminerserver.6" DESTINATION "${MANDIR}/man6")
-	install(FILES "misc/freeminer.desktop" DESTINATION "${XDG_APPS_DIR}")
-	install(FILES "misc/freeminer.appdata.xml" DESTINATION "${APPDATADIR}")
-	install(FILES "misc/freeminer.svg" DESTINATION "${ICONDIR}/hicolor/scalable/apps")
+	install(FILES "doc/minetime.6" "doc/minetimeserver.6" DESTINATION "${MANDIR}/man6")
+	install(FILES "misc/minetime.desktop" DESTINATION "${XDG_APPS_DIR}")
+	install(FILES "misc/minetime.appdata.xml" DESTINATION "${APPDATADIR}")
+	install(FILES "misc/minetime.svg" DESTINATION "${ICONDIR}/hicolor/scalable/apps")
 endif()
 
 #
@@ -190,22 +190,22 @@ add_subdirectory(src)
 
 # CPack
 
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "An InfiniMiner/Minecraft inspired game")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "An infinite Voxel mining world game")
 set(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
 set(CPACK_PACKAGE_VERSION_TWEAK ${VERSION_TWEAK})
-set(CPACK_PACKAGE_VENDOR "celeron55")
-set(CPACK_PACKAGE_CONTACT "Perttu Ahola <celeron55@gmail.com>")
+set(CPACK_PACKAGE_VENDOR "crazyginger72")
+set(CPACK_PACKAGE_CONTACT "Ginger Pollard <gingerpollard72@gmail.com>")
 
 if(WIN32)
 	# For some reason these aren't copied otherwise
 	# NOTE: For some reason now it seems to work without these
 	#if(BUILD_CLIENT)
-	#	install(FILES bin/freeminer.exe DESTINATION bin)
+	#	install(FILES bin/minetime.exe DESTINATION bin)
 	#endif()
 	#if(BUILD_SERVER)
-	#	install(FILES bin/freeminerserver.exe DESTINATION bin)
+	#	install(FILES bin/minetimeserver.exe DESTINATION bin)
 	#endif()
 
 	execute_process(COMMAND git describe --always --tag --dirty
@@ -228,10 +228,10 @@ if(WIN32)
 	set(CPACK_GENERATOR ZIP)
 
 	# This might be needed for some installer
-	#set(CPACK_PACKAGE_EXECUTABLES bin/freeminer.exe "Freeminer" bin/freeminerserver.exe "Freeminer Server")
+	#set(CPACK_PACKAGE_EXECUTABLES bin/minetime.exe "minetime" bin/minetimeserver.exe "minetime Server")
 elseif(APPLE)
 	set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${VERSION_STRING}-osx")
-	set(CPACK_PACKAGE_ICON ${CMAKE_CURRENT_SOURCE_DIR}/misc/freeminer-icon.icns)
+	set(CPACK_PACKAGE_ICON ${CMAKE_CURRENT_SOURCE_DIR}/misc/minetime-icon.icns)
 	set(CPACK_BUNDLE_NAME ${PROJECT_NAME})
 	set(CPACK_BUNDLE_ICON ${CPACK_PACKAGE_ICON})
 	set(CPACK_BUNDLE_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/misc/Info.plist)

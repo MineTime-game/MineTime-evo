@@ -36,14 +36,13 @@ core.register_privilege("shout", "Can speak in chat")
 core.register_privilege("ban", "Can ban and unban players")
 core.register_privilege("kick", "Can kick players")
 core.register_privilege("give", "Can use /give and /giveme")
-core.register_privilege("password", "Can use /setpassword and /clearpassword")
 core.register_privilege("fly", {
 	description = "Can fly using the free_move mode",
 	give_to_singleplayer = false,
 })
 core.register_privilege("fast", {
 	description = "Can walk fast using the fast_move mode",
-	give_to_singleplayer = false,
+	give_to_singleplayer = true,
 })
 core.register_privilege("noclip", {
 	description = "Can fly through walls",

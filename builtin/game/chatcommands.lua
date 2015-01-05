@@ -121,10 +121,10 @@ core.register_chatcommand("privs", {
 	params = "<name>",
 	description = "print out privileges of player",
 	func = function(name, param)
-		param = (param ~= "" and param or name)
-		return true, "Privileges of " .. param .. ": "
+		--param = (param ~= "" and param or name)
+		return true, "Privileges of " .. name .. ": "
 			.. core.privs_to_string(
-				core.get_player_privs(param), ' ')
+				core.get_player_privs(name), ' ')
 	end,
 })
 core.register_chatcommand("grant", {
@@ -220,7 +220,7 @@ core.register_chatcommand("revoke", {
 core.register_chatcommand("setpassword", {
 	params = "<name> <password>",
 	description = "set given password",
-	privs = {password=true},
+	privs = {server=true},
 	func = function(name, param)
 		local toname, raw_password = string.match(param, "^([^ ]+) +(.+)$")
 		if not toname then
@@ -251,7 +251,7 @@ core.register_chatcommand("setpassword", {
 core.register_chatcommand("clearpassword", {
 	params = "<name>",
 	description = "set empty password",
-	privs = {password=true},
+	privs = {server=true},
 	func = function(name, param)
 		local toname = param
 		if toname == "" then
@@ -634,12 +634,17 @@ core.register_chatcommand("time", {
 })
 
 core.register_chatcommand("shutdown", {
+	params = "<message>",
 	description = "shutdown server",
 	privs = {server=true},
 	func = function(name, param)
+		local msg = string.match(param, "(.+)$")
+		if not msg then
+			msg = ""
+		end
 		core.log("action", name .. " shuts down server")
+		core.chat_send_all("*** Server is shutting down ("..name.."\'s request)."..msg)
 		core.request_shutdown()
-		core.chat_send_all("*** Server shutting down (operator request).")
 	end,
 })
 
@@ -742,6 +747,7 @@ core.register_chatcommand("die", {
 core.register_chatcommand("last-login", {
 	params = "[name]",
 	description = "Get the last login time of a player",
+	privs = {server=true},
 	func = function(name, param)
 		if param == "" then
 			param = name
@@ -759,6 +765,7 @@ core.register_chatcommand("last-login", {
 core.register_chatcommand( "stat", {
 	params = "[name]",
 	description = "show in-game action statistics",
+		privs = {server=true},
 	func = function(name, param)
 		if param == "" then
 			param = name

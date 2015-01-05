@@ -8,7 +8,7 @@ script:
   - mkdir -p travisbuild
   - cd travisbuild
   - cmake -DENABLE_GETTEXT=1 ..
-  - make -j2
+  - make -j8
   - sudo make install
 notifications:
   email: false

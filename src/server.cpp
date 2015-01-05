@@ -1,23 +1,24 @@
 /*
 server.cpp
-Copyright (C) 2010-2013 celeron55, Perttu Ahola <celeron55@gmail.com>
-*/
 
-/*
-This file is part of Freeminer.
+MineTime
+Copyright (C) 2014 cg72, Ginger Pollard **gingerpollard72@gmail.com**
 
-Freeminer is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
+This file is part of MineTime
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
 (at your option) any later version.
 
-Freeminer  is distributed in the hope that it will be useful,
+This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with Freeminer.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Lesser General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 #include "server.h"
@@ -692,11 +693,24 @@ void Server::start(Address bind_addr)
 			<< " cpp="<<__cplusplus<<" \t"
 			<< " cores="<< porting::getNumberOfProcessors()
 			<< std::endl;
-	actionstream<<"World at ["<<m_path_world<<"]"<<std::endl;
-	actionstream<<"Server for gameid=\""<<m_gamespec.id
-			<<"\" mapgen=\""<<m_emerge->params.mg_name
-			<<"\" listening on "<<bind_addr.serializeString()<<":"
-			<<bind_addr.getPort() << "."<<std::endl;
+
+	// ASCII art for the win!
+
+	actionstream
+	<<"        _              _____ _                        "<<std::endl
+	<<"  /\\/\\ (_)_ __   ___  /__   \\_)_ __ ___   ___      "<<std::endl
+	<<" /    \\| | '_ \\ / _ \\   / /\\ \\| '_ ` _ \\ / _ \\ "<<std::endl
+	<<"/ /\\/\\ \\ | | | |  __/  / /  \\/| | | | | |  __/    "<<std::endl
+	<<"\\/    \\/_|_| |_|\\___|  \\/   |_|_| |_| |_|\\___|   "<<std::endl
+	<<"         Ver. 0.1                    (c) 2014         "<<std::endl;
+	actionstream
+	<<"Server loaded world at "<<m_path_world<<""<<std::endl;
+	actionstream
+	<<"Server is running gameid=\""<<m_gamespec.id<<"\""<<std::endl;
+	actionstream
+	<<"IP is set to: "<<bind_addr.serializeString()<<"\""<<std::endl;
+	actionstream
+	<<"Listening on port:"<<bind_addr.getPort()<<std::endl;
 }
 
 void Server::stop()
@@ -826,10 +840,9 @@ void Server::AsyncRunStep(float dtime, bool initial_step)
 		//JMutexAutoLock lock(m_env_mutex);
 		// Figure out and report maximum lag to environment
 		float max_lag = m_env->getMaxLagEstimate();
-		max_lag *= 0.9998; // Decrease slowly (about half per 5 minutes)
 		if(dtime > max_lag){
 			if(dtime > dedicated_server_step && dtime > max_lag * 2.0)
-				infostream<<"Server: Maximum lag peaked to "<<dtime
+				infostream<<"Server: Last reported lag: "<<dtime
 						<<" s"<<std::endl;
 			max_lag = dtime;
 		}
